@@ -25,11 +25,12 @@ function permutations(n, k) {
 }
 
 function shuffleArray(arr) {
-    for (let i = arr.length - 1; i > 0; i--) {
+    const newArr = arr.slice();
+    for (let i = newArr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
+        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
     }
-    return arr;
+    return newArr;
 }
 
 function randomBoolean() {
@@ -64,7 +65,7 @@ function sorted(arr) {
 
 
 // Worker config
-self.addEventListener('message', function(event) {
+self.addEventListener('message', function (event) {
     const { loop, problem } = event.data;
     let wrappedProblem;
     try {
